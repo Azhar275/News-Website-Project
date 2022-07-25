@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Admin Page Website Berita By Kelompok 2</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--===============================================================================================-->
+    <link rel="icon" href="{{ url_for('static', filename='assets/images/icon_web2.png') }}" type="image/gif"> 
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news/vendor/bootstrap/css/bootstrap.min.css') }}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news/vendor/animate/animate.css') }}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news/vendor/css-hamburgers/hamburgers.min.css') }}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news/vendor/animsition/css/animsition.min.css') }}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news/vendor/select2/select2.min.css') }}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news/vendor/daterangepicker/daterangepicker.css') }}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news/css/util.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news/css/main.css') }}" />
+    <!--===============================================================================================-->
+  </head>
+  <body>
+    <div class="container-contact100">
+      <div class="wrap-contact100">
+        <form class="contact100-form validate-form" method="POST" action="/login/check">
+          <span class="contact100-form-title"> Login Admin </span>
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+              <div class="d-flex justify-content-center mb-3">
+                  {{ messages[0] }}
+              </div>
+          {% endif %}
+          {% endwith %}
+          <div class="wrap-input100 validate-input" data-validate="Silahkan diisi">
+            <input class="input100" type="text" name="username" placeholder="Username"  />
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate="Silahkan diisi">
+            <input class="input100" type="password" name="password" placeholder="Password" />
+            <span class="focus-input100"></span>
+          </div>
+          <div class="container-contact100-form-btn">
+            <button class="contact100-form-btn">
+              <span>
+                <i class="fa m-r-6" aria-hidden="true"></i>
+                Login
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <script src="{{ url_for('static', filename='news/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ url_for('static', filename='news/vendor/animsition/js/animsition.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ url_for('static', filename='news/vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ url_for('static', filename='news/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ url_for('static', filename='news/vendor/select2/select2.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ url_for('static', filename='news/vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='news/vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ url_for('static', filename='news/vendor/countdowntime/countdowntime.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+    <script src="{{ url_for('static', filename='news/js/main.js') }}"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-23581568-13");
+    </script>
+    <script>
+      $('.datepicker').datepicker();
+      $('.datepicker').datepicker({
+        format: 'mm/dd/yyyy',
+        startDate: '-3d'
+      });
+    </script>
+  </body>
+</html>
+
+

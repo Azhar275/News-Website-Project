@@ -1,0 +1,26 @@
+[{
+  "_id": {
+    "$oid": "625650e281465cf61312b819"
+  },
+  "kategori": "Metaverse"
+},{
+  "_id": {
+    "$oid": "62582b065285b8c465d9a18a"
+  },
+  "kategori": "Olahraga"
+},{
+  "_id": {
+    "$oid": "62582df75285b8c465d9a18b"
+  },
+  "kategori": "Bisnis"
+},{
+  "_id": {
+    "$oid": "62582fe05285b8c465d9a18c"
+  },
+  "kategori": "Edukasi"
+},{
+  "_id": {
+    "$oid": "625831a35285b8c465d9a18d"
+  },
+  "kategori": "Teknologi"
+}]

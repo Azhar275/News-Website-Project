@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Admin Page Website Berita By Kelompok 2</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--===============================================================================================-->
+    <link rel="icon" href="{{ url_for('static', filename='assets/images/icon_web2.png') }}" type="image/gif"> 
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news/vendor/bootstrap/css/bootstrap.min.css') }}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news/vendor/animate/animate.css') }}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news/vendor/css-hamburgers/hamburgers.min.css') }}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news/vendor/animsition/css/animsition.min.css') }}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news/vendor/select2/select2.min.css') }}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news/vendor/daterangepicker/daterangepicker.css') }}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news/css/util.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news/css/main.css') }}" />
+    <!--===============================================================================================-->
+  </head>
+  <body>
+    <div class="container-contact100">
+      <div class="wrap-contact100">
+        {% if action == 1 %}
+        <form class="contact100-form validate-form" method="POST" action="/add/new">
+          <span class="contact100-form-title"> Masukkan Berita </span>
+          <div class="wrap-input100 validate-input" data-validate="Masukkan Judul">
+            <input class="input100" type="text" name="judul" placeholder="Judul"  />
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate="Masukkan Kategori">
+            <select class="input100" name="category" id="cars" value="">
+              <option class="input100" selected>Pilih Kategori</option>
+              {% for a in category %}
+              <option class="input100" value="{{a._id}}">{{a._id}}</option>
+              {% endfor %}
+            </select>
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate="Masukkan Tag">
+            <input class="input100" type="text" name="tag" placeholder="Tag" />
+            <span class="focus-input100"></span>
+          </div>
+          <div class="wrap-input100 validate-input input-group date" data-validate="Masukkan Tanggal">
+            <input class="input100" type="text" name="date" placeholder="Tanggal"  onfocus="(this.type='date')"/>
+            <span class="focus-input100"></span>
+          </div>
+          <div class="wrap-input100 validate-input" data-validate="Masukkan Penulis">
+            <input class="input100" type="text" name="writer" placeholder="Penulis" />
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate="Masukkan Berita">
+            <textarea class="input100" name="content" placeholder="Isi Berita"></textarea>
+            <span class="focus-input100"></span>
+          </div>
+          <div class="container-contact100-form-btn">
+            <button class="contact100-form-btn">
+              <span>
+                <i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
+                Send
+              </span>
+            </button>
+          </div>
+        </form>
+
+        {% elif action == 2 %}
+          <form class="contact100-form validate-form" method="POST" action="/add/{{data._id}}">
+          <span class="contact100-form-title"> Masukkan Berita </span>
+          <div class="wrap-input100 validate-input" data-validate="Masukkan Judul">
+            <input class="input100" type="text" name="judul" value="{{data.judul}}"  />
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate="Masukkan Judul">
+            <select class="input100" name="category" id="cars">
+              <option class="input100" selected value="{{data.kategori}}">{{data.kategori}}</option>
+              {% for a in category %}
+                {% if a != data.kategori %}
+                <option class="input100" value="{{a._id}}">{{a._id}}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate="Masukkan Tag">
+            <input class="input100" type="text" name="tag" value="{{penanda}}" />
+            <span class="focus-input100"></span>
+          </div>
+          <div class="wrap-input100 validate-input input-group date" data-validate="Masukkan Tanggal">
+            <input class="input100" type="text" name="date" value="{{data.tanggal}}"  onfocus="(this.type='date')"/>
+            <span class="focus-input100"></span>
+          </div>
+          <div class="wrap-input100 validate-input" data-validate="Masukkan Penulis">
+            <input class="input100" type="text" name="writer" value="{{data.penulis}}" />
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate="Masukkan Berita">
+            <textarea class="input100" name="content" value="{{data.isi}}">{{data.isi}}</textarea>
+            <span class="focus-input100"></span>
+          </div>
+          <div class="container-contact100-form-btn">
+            <button class="contact100-form-btn">
+              <span>
+                <i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
+                Send
+              </span>
+            </button>
+          </div>
+        </form>
+          {% endif %}
+      </div>
+    </div>
+
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <script src="{{ url_for('static', filename='news/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ url_for('static', filename='news/vendor/animsition/js/animsition.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ url_for('static', filename='news/vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ url_for('static', filename='news/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ url_for('static', filename='news/vendor/select2/select2.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ url_for('static', filename='news/vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='news/vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ url_for('static', filename='news/vendor/countdowntime/countdowntime.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+    <script src="{{ url_for('static', filename='news/js/main.js') }}"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-23581568-13");
+    </script>
+    <script>
+      $('.datepicker').datepicker();
+      $('.datepicker').datepicker({
+        format: 'mm/dd/yyyy',
+        startDate: '-3d'
+      });
+    </script>
+  </body>
+</html>
+
+
